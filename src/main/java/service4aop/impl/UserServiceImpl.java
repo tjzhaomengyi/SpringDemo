@@ -13,6 +13,7 @@ import javax.annotation.Resource;
  * @Description:
  */
 
+@Service("userservice")
 public class UserServiceImpl implements UserService {
 
     UserDao userDao;//这里自动找到Dao对应装配的UserDao的实现类UserDaoImpl

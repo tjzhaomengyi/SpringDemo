@@ -12,7 +12,7 @@ import service4aop.UserService;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:ApplicationContext-AOP.xml")
+@ContextConfiguration(locations = "classpath:ApplicationContext-AOP2.xml")
 public class TestAOP {
     @Autowired
     UserService userService;

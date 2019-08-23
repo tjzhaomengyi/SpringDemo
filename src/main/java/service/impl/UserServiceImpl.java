@@ -13,7 +13,7 @@ import javax.annotation.Resource;
  * @Description:
  */
 
-@Service("userservice")
+@Service("userService")
 public class UserServiceImpl implements UserService {
 //    @Autowired
     @Resource(name="userdao")
