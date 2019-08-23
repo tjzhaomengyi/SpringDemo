@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--<context:component-scan base-package="dao,service">-->
+
+    <!--</context:component-scan>-->
+
+    <!--使用xml注入方式-->
+    <bean id = "userservice" class="service4aop.impl.UserServiceImpl"></bean>
+    <bean id = "myAspect" class="aspect.MyAspect"></bean>
+
+    <aop:config>
+        <aop:pointcut id="myPointcut" expression="execution(* service4aop..*(..))"></aop:pointcut>
+        <aop:aspect ref="myAspect">
+            <aop:before method="before" pointcut-ref="myPointcut"/>
+            <aop:after-returning method="afterReturning" pointcut-ref="myPointcut"/>
+            <aop:after method="after" pointcut-ref="myPointcut"/>
+            <aop:after-throwing method="afterThrowing" pointcut-ref="myPointcut"/>
+            <!--<aop:around method="around" pointcut-ref="myPointcut"/>-->
+        </aop:aspect>
+    </aop:config>
+</beans>
+

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+    <bean id="userDao" class="dao.impl.UserDaoImpl"></bean>
+    <!--手动装配-->
+    <!--<bean id="userservice" class="service.impl.UserServiceImpl">-->
+        <!--<property name="userDao" ref="userdao"></property>-->
+    <!--</bean>-->
+
+    <!--自动装配-->
+    <bean id="userservice" class="service.impl.UserServiceImpl" autowire="byName">
+
+    </bean>
+    <!--无参构造形式-->
+    <!--<bean id="user" class="entity.User">-->
+    <!--<property name="uid" value="1"></property>-->
+    <!--<property name="uname" value="zs"></property>-->
+    <!--</bean>-->
+    <!--有参构造形式-->
+    <!--<bean id="user" class="entity.User" init-method="init" destroy-method="destroy">-->
+    <!--<constructor-arg name="uid" value="1"></constructor-arg>-->
+    <!--<constructor-arg name="uname" value="ls"></constructor-arg>-->
+    <!--</bean>-->
+
+    <!--使用set方法的方式来注入初始值-->
+    <bean id="usercomplex" class="entity.UserComplex">
+        <property name="uid" value="1"></property>
+        <property name="uname" value="zs"></property>
+        <property name="arrData">
+            <array>
+                <value>zhao</value>
+                <value>qian</value>
+                <value>sun</value>
+            </array>
+        </property>
+        <property name="listData">
+            <list>
+                <value>1</value>
+                <value>2</value>
+                <value>3</value>
+            </list>
+        </property>
+        <property name="setData">
+            <set>
+                <value>zhao</value>
+                <value>qian</value>
+                <value>zhao</value>
+            </set>
+        </property>
+        <property name="mapData">
+            <map>
+                <entry>
+                    <key>
+                        <value>爱好</value>
+                    </key>
+                    <value>足球</value>
+                </entry>
+                <entry>
+                    <key>
+                        <value>地址</value>
+                    </key>
+                    <value>天津</value>
+                </entry>
+            </map>
+        </property>
+        <property name="pros">
+            <props>
+                <prop key="性别">男</prop>
+                <prop key="爱好">女</prop>
+            </props>
+        </property>
+    </bean>
+</beans>
